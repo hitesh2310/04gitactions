@@ -1,0 +1,25 @@
+name: lint and test
+on: [push,workflow_dispatch]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: build command
+                run: vite build
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: lint command
+                run: eslint --ext .jsx --fix src
+    test:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            -   name: test command
+                run: vitest run
+    preview:
+        needs: build 
+        runs-on: ubuntu-latest
+        steps: 
+            -   name: preview
+                run: vite preview
