@@ -26,10 +26,10 @@ jobs:
             -   name: Install dependencies 
                 run: npm ci
             -   name: lint command
-                run: eslint --ext .jsx --fix src
+                run: npm run lint
     preview:
         needs: build 
         runs-on: ubuntu-latest
         steps: 
             -   name: preview
-                run: vite preview
+                run: npm run preview
